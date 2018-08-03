@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<a href="static_pages/home">Home</a> <%= link_to 'New Post', new_post_path %>
+<% @posts.each do |post| %>
+  <div class="content-grid">
+      <div class="post-body">
+        <div class="content-title"><%= post.title %></div>
+        <% if post.picture.url != nil %>
+         <div class="content-image"><%=image_tag post.picture.url(:medium)%></div>
+        <% end %>    
+        <%= post.body %>
+        <br>
+        <%= link_to 'Edit', edit_post_path(post) %><br>
+        <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+  </div>
+<% end %>
+
